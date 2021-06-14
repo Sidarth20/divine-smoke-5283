@@ -7,7 +7,8 @@ class PlotsController < ApplicationController
     @plot = Plot.find(params[:id])
     @plants = @plot.plants
     # binding.pry
-    @plant_id = @plants.find(params[:id]).id
+    # @plant_id = @plants.find(params[:id]).id
+    @plant_id = @plants.first.id
     # binding.pry
     # @plot.plants.delete(Plant.find(params[:id])) this deletes the record entirely
     # need to delete the association, will try to redirect to joins table
