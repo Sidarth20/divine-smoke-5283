@@ -49,7 +49,6 @@ RSpec.describe 'Plot Index' do
       expect(current_path).to eq("/plots")
 
       expect(page).to_not have_content(plant_1.name)
-      # binding.pry
     end
   end
 end
