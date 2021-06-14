@@ -3,6 +3,6 @@
 <% @plots.each do |plot| %>
   <p> Plot Number: <%= plot.number %> </p>
   <% plot.plants.each do |plant| %>
-    <p> Plant Name: <%= plant.name %>  </p>
+    <p> Plant Name: <%= plant.name %> <%= link_to "Remove #{plant.name}", "plots/#{plot.id}" %>  </p>
   <% end %>
 <% end %>
