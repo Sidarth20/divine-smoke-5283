@@ -6,6 +6,7 @@ class PlotsController < ApplicationController
   def show
     @plot = Plot.find(params[:id])
     @plants = @plot.plants
+    # binding.pry
     @plant_id = @plants.find(params[:id]).id
     # binding.pry
     # @plot.plants.delete(Plant.find(params[:id])) this deletes the record entirely
