@@ -40,21 +40,24 @@ RSpec.describe 'Plot Index' do
       plant_plot_3 = PlantPlot.create!(plant_id: plant_1.id, plot_id: plot_3.id)
 
       visit "/plots"
-      # save_and_open_page
-      within("plot-#{plot_1.id}") do
+      within("#plot-#{plot_3.id}") do
         expect(page).to have_link("Remove #{plant_1.name}")
       end
-      within("plot-#{plot_2.id}") do
+      within("#plot-#{plot_1.id}") do
+        expect(page).to have_link("Remove #{plant_1.name}")
+      end
+      within("#plot-#{plot_2.id}") do
         expect(page).to have_link("Remove #{plant_2.name}")
       end
-      within("plot-#{plot_3.id}") do
-        expect(page).to have_link("Remove #{plant_1.name}")
+
+      within("#plot-#{plot_1.id}") do
+        click_link "Remove #{plant_1.name}"
+        expect(current_path).to eq("/plots")
       end
 
-      click_link "Remove #{plant_1.name}"
-      expect(current_path).to eq("/plots")
-
-      expect(page).to_not have_content(plant_1.name)
+      within("#plot-#{plot_1.id}") do
+        expect(page).to_not have_content(plant_1.name)
+      end
     end
   end
 end
